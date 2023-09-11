@@ -49,8 +49,8 @@ table{
 }
 .op_cal{
     font-size: large;
-    width: 3em;
-    height: 3em;
+    width: 4em;
+    height: 4em;
     border: 1px solid #a9a9a9;
 }
 .op_cal:hover{
