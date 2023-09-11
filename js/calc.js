@@ -1,5 +1,6 @@
 // Captura o elemento input com id "calcs", o input de valores
 let elm_calcs = document.getElementById("calcs");
+let calc = document.getElementById("calc");
 
 //Guarda a última operação
 let last_opt = [null, null];
@@ -55,7 +56,7 @@ function result_ops() {
         last_opt = [0, elm_calcs];
     } catch (error) {
         // Em caso de falha retorna uma alerta
-        alert("Não foi possível realizar conta, verifique se não está faltando algo.");
+        calc.insertAdjacentHTML("beforeend", "<p id='error_msg'>Não foi possível realizar conta, verifique se não está faltando algo.</p>");
     }
 }
 
@@ -72,6 +73,12 @@ function the_op() {
     let v_otype = parseInt(this.dataset.type);
     // Captura o valor da operação dado pelos elementos com classe "op_cal" pelo data-value
     let v_op = this.dataset.value;
+
+    // Verifica se a mensagem de erro está presente
+    if (document.getElementById("error_msg") != null) {
+        // Caso o elemento caso esteja presente
+        document.getElementById("error_msg").remove();
+    }
 
     if (elm_calcs.value == "" && v_otype == 0 || v_otype == 0) {
         // Verifica se os valores estão vazios e se a operação é numérica, ou verifica se é uma operação numérica
